@@ -18,6 +18,7 @@ namespace Commandos.Entities
             manufacturerName = ManufacturerName;
             amountOfBullets = AmountOfBullets;
         }
+        //Prints a shot and reduces one bullet
         static void Shoot()
         {
 
