@@ -19,9 +19,10 @@ namespace Commandos.Entities
             amountOfBullets = AmountOfBullets;
         }
         //Prints a shot and reduces one bullet
-        static void Shoot()
+        public void Shoot()
         {
-
+            amountOfBullets -= 1;
+            Console.WriteLine("A shot was fired.");
         }
     }
 }
