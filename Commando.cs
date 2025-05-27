@@ -8,14 +8,14 @@ namespace Commandos.Entities
 {
     public class Commando
     {
-        public string name;
-        public string nameCode;
-        public string[] tools = new string[5];
-        public string status;
-        public Commando(string Name , string NameCode,string Status, string[] Tools)
+        protected string name;
+        public string codeName { get; set;}
+        protected string[] tools = new string[5];
+        protected string status;
+        public Commando(string Name , string Codename,string[] Tools,string Status = "")
         {
             name = Name;
-            nameCode = NameCode;
+            codeName = Codename;
             status = Status;
             tools = Tools;
             
@@ -34,12 +34,67 @@ namespace Commandos.Entities
         }
         //Prints to the console that a command
         //with code name X is valid.
-        public void Attack()
+        public virtual void Attack()
         {
             status = "attack";
-            Console.WriteLine($"The commando soldier with the code name {nameCode} is attacking.");
+            Console.WriteLine($"The commando soldier with the code name {codeName} is attacking.");
+        }
+        public void SayName(string commanderRank)
+        {
+            if (commanderRank == "GENERAL")
+            {
+                Console.WriteLine(name);
+            }
+            else if (commanderRank == "COLONEL")
+            {
+                Console.WriteLine(codeName);
+            }
+            else
+            {
+                Console.WriteLine("You do not have permission to access that name.");
+            }
         }
      
+    }
+    public class AirCommando : Commando
+    {
+        public AirCommando(string Name, string Codename, string[] Tools, string Status = ""):
+            base(Name, Codename, Tools, Status)
+        {
+
+        }
+        //Prints something about parachuting
+        public void Parachuting()
+        {
+            Console.WriteLine("I'm falling!!!!!");
+        }
+        //Prints to the console that a command
+        //with code name X is valid.
+        public override void Attack()
+        {
+            status = "attack";
+            Console.WriteLine($"Air commando soldier with the code name {codeName} attacks!");
+        }
+    }
+    public class SeaCommando : Commando
+    {
+        public SeaCommando(string Name, string Codename, string[] Tools, string Status = "") :
+            base(Name, Codename, Tools, Status)
+        {
+
+        }
+        // Prints something about swimming
+        public void Swimming()
+        {
+            Console.WriteLine("I'm swimming in the sea!!!!!");
+        }
+        //Prints to the console that a command
+        //with code name X is valid.
+        public override void Attack()
+        {
+            status = "attack";
+            Console.WriteLine($"Sea commando with the code name {codeName} attacking!");
+        }
     }
 
 }

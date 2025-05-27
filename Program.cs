@@ -7,27 +7,16 @@ namespace Commandos
         static void Main()
         {
             string[] tools = new string[] { "Hammer", "chisel", "rope", "bag", "waterbottle" };
-            Commando commando = new Commando("eli", "XDE123", "walk", tools);
-            Weapon weapon = new Weapon("gun", "Zastava Arms", 12);
-            Console.WriteLine(commando.name);
-            Console.WriteLine(commando.nameCode);
-            Console.WriteLine(commando.status);
-            foreach(string tool in commando.tools)
+            List<Commando> commando = new List<Commando>()
             {
-                Console.WriteLine(tool);
+                new Commando("eli","ZXSD4",tools),
+                new AirCommando("eli","ZXSD4",tools),
+                new SeaCommando("eli","ZXSD4",tools)
+            };
+            foreach (Commando commando1 in commando)
+            {
+                commando1.Attack();
             }
-            Console.WriteLine(weapon.name);
-            Console.WriteLine(weapon.manufacturerName);
-            Console.WriteLine(weapon.amountOfBullets);
-            commando.Walk();
-            Console.WriteLine(commando.status);
-            commando.Hide();
-            Console.WriteLine(commando.status);
-            commando.Attack();
-            Console.WriteLine(commando.status);
-            weapon.Shoot();
-            Console.WriteLine(weapon.amountOfBullets);
-            
         }
     }
 }
