@@ -25,4 +25,58 @@ namespace Commandos.Entities
             Console.WriteLine("A shot was fired.");
         }
     }
+    public class WeaponFactory
+    {
+        public static List<Weapon> WeaponShows = new List<Weapon>();
+        private static WeaponFactory? Show = null;
+        private WeaponFactory()
+        {
+
+        }
+        public static WeaponFactory Constructor()
+        {
+            if (Show == null)
+            {
+                Show = new WeaponFactory();
+            }
+            return Show;
+        }
+        public static void CreatingInstances(int amount, string type)
+        {
+            switch (type)
+            {
+                case "Enemy":
+                    for (int i = 0; i < amount; i++)
+                    {
+                        _AddingShow(_ReceivingWValues());
+                    }
+                    break;
+            }
+
+        }
+        private static Weapon _ReceivingWValues()
+        {
+            Console.WriteLine("Enter name: ");
+            string name = Console.ReadLine()!;
+            Console.WriteLine("Enter manufacturer name: ");
+            string manufacturerName = Console.ReadLine()!;
+            Console.WriteLine("Enter amount of bullets");
+            int amount = int.Parse(Console.ReadLine()!);
+            Weapon show = _StartShowOfWeapon(name, manufacturerName,amount);
+            return show;
+        }
+        private static Weapon _StartShowOfWeapon(string Name,
+            string ManufacturerName, int AmountOfBullets)
+        {
+            Weapon Show = new Weapon(Name, ManufacturerName, AmountOfBullets);
+            return Show;
+        }
+        private static void _AddingShow(Weapon weapon)
+        {
+            WeaponShows.Add(weapon);
+        }
+
+    }
 }
+
+
