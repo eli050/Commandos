@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Commandos.Entities
 {
-    public class Enemy
+    public class Enemy 
     {
         public string name;
         public static int life = 100;
@@ -24,23 +24,44 @@ namespace Commandos.Entities
     public class EnemyFactory
     {
         public static List<Enemy> EnemyShows = new List<Enemy>();
-        private static EnemyFactory Show = null;
+        private static EnemyFactory? show = null;
         private EnemyFactory()
         {
 
         }
         public static EnemyFactory Constructor()
         {
-            if (Show == null)
+            if (show == null)
             {
-                Show = new EnemyFactory();
+                show = new EnemyFactory();
             }
-            return Show;
+            return show;
         }
-        public static Enemy StartShowOfEnemy(string Name, string Status)
+        public static void CreatingInstances(int amount, string type)
+        { 
+            switch (type)
+            {
+                case "Enemy":
+                    for (int i = 0; i < amount; i++)
+                    {
+                        _AddingShow(_ReceivingEValues());
+                    }
+                    break;
+            }
+
+        }
+        private static Enemy _ReceivingEValues()
+        {
+            Console.WriteLine("enter name: ");
+            string name = Console.ReadLine()!;
+            Console.WriteLine("enter status: ");
+            string status = Console.ReadLine()!;
+            Enemy show = _StartShowOfEnemy(name, status);
+            return show;
+        }
+        private static Enemy _StartShowOfEnemy(string Name, string Status)
         {
             Enemy Show = new Enemy(Name, Status);
-            _AddingShow(Show);
             return Show;
         }
         private static void _AddingShow(Enemy enemy)
