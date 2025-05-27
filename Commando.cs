@@ -19,18 +19,23 @@ namespace Commandos.Entities
             status = Status;
             
         }
+        //Prints to the consul that the soldier is leaving
         public void Walk()
         {
 
         }
+        //Prints to the consul that the soldier is hiding
         public void Hide()
         {
 
         }
+        //Prints to the console that a command
+        //with code name X is valid.
         public void Attack()
         {
 
         }
+        //Adds tools to Commando
         public void AddTools()
         {
 
