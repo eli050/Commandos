@@ -41,7 +41,7 @@ namespace Commandos.Entities
             }
             return Show;
         }
-        public static void CreatingInstanceses(int amount, string type)
+        public void CreatingInstanceses(int amount, string type)
         {
             switch (type)
             {
