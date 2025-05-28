@@ -6,16 +6,11 @@ namespace Commandos
     {
         static void Main()
         {
-            string[] tools = new string[] { "Hammer", "chisel", "rope", "bag", "waterbottle" };
-            List<Commando> commando = new List<Commando>()
+            CommandoFactory test = CommandoFactory.Constructor();
+            test.CreatingInstanceses(2, "Commando");
+            foreach(Commando commando in CommandoFactory.instansShow)
             {
-                new Commando("eli","ZXSD4",tools),
-                new AirCommando("eli","ZXSD4",tools),
-                new SeaCommando("eli","ZXSD4",tools)
-            };
-            foreach (Commando commando1 in commando)
-            {
-                commando1.Attack();
+                commando.Attack();
             }
         }
     }
