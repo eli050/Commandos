@@ -41,11 +41,11 @@ namespace Commandos.Entities
             }
             return Show;
         }
-        public static void CreatingInstances(int amount, string type)
+        public void CreatingInstanceses(int amount, string type)
         {
             switch (type)
             {
-                case "Enemy":
+                case "Weapon":
                     for (int i = 0; i < amount; i++)
                     {
                         _AddingShow(_ReceivingWValues());
