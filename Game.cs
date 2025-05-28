@@ -8,11 +8,11 @@ namespace Commandos.Entities
 {
     public static class Game
     {
+        private static List<EnemyFactory> enemyFactories = new List<EnemyFactory>();
+        private static List<WeaponFactory> weaponFactories = new List<WeaponFactory>();
+        private static List<CommandoFactory> commandoFactories = new List<CommandoFactory>();
         public static void InitGame()
         {
-            List<EnemyFactory> enemyFactories = new List<EnemyFactory>();
-            List<WeaponFactory> weaponFactories = new List<WeaponFactory>();
-            List<CommandoFactory> commandoFactories = new List<CommandoFactory>();
             List<int> numbers = new List<int>() { 1, 2, 4, 7, 12, 3, 13, 8, 10, 5, 6, 9 };
             List<string> typesOfEnemy = new List<string>() { "Enemy" };
             List<string> typeOfWeapon = new List<string>() { "Weapon" };
@@ -28,6 +28,18 @@ namespace Commandos.Entities
             commandoFactory.CreatingInstanceses(numbers[random.Next(numbers.Count)], typeOfCommando[random.Next(numbers.Count)]);
             commandoFactories.Add(commandoFactory);
 
+        }
+        static public void AddEnemyFactory(EnemyFactory enemyFactory)
+        {
+            enemyFactories.Add(enemyFactory);
+        }
+        static public void AddWeaponFactory(WeaponFactory weaponFactory)
+        {
+            weaponFactories.Add(weaponFactory);
+        }
+        static public void AddCommandoFactory(CommandoFactory commandoFactory)
+        {
+            commandoFactories.Add(commandoFactory);
         }
     }
 }
